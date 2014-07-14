@@ -33,10 +33,8 @@ namespace TournamentOrganizer.views
 
         private void NewPlayer_Click(object sender, RoutedEventArgs e)
         {
-            Team newTeam = new Team();
             Player player = new Player();
-            newTeam.addPlayer(player);
-            GetDataContext().addTeam(newTeam);
+            GetDataContext().addPlayer(player);
         }
     }
 }

@@ -30,5 +30,15 @@ namespace TournamentOrganizer.views
         {
             this.DataContext = player;
         }
+
+        private Player getModel()
+        {
+            return (Player)this.DataContext;
+        }
+
+        private void RemovePlayer(object sender, RoutedEventArgs e)
+        {
+            getModel().Dispose();
+        }
     }
 }

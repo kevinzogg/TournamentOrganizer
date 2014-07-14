@@ -11,11 +11,18 @@ namespace TournamentOrganizer.domain
     public class Tournament : NotificationObject
     {
         private List<Team> teams = new List<Team>();
+        private List<Player> players = new List<Player>();
         private List<Match> matches = new List<Match>();
 
         public IList<Team> Teams
         {
             get { return teams.AsReadOnly(); }
+            private set { }
+        }
+
+        public IList<Player> Players
+        {
+            get { return players.AsReadOnly(); }
             private set { }
         }
 
@@ -25,10 +32,18 @@ namespace TournamentOrganizer.domain
             private set { }
         }
 
-        public void addTeam(Team newTeam)
+        public void addPlayer(Player newPlayer)
         {
-            teams.Add(newTeam);
-            RaisePropertyChanged("Teams");
+            newPlayer.OnPlayerRemoved += PlayerRemoved;
+            players.Add(newPlayer);
+            RaisePropertyChanged("Players");
+        }
+
+        private void PlayerRemoved(Player playerToDelete)
+        {
+            playerToDelete.OnPlayerRemoved -= PlayerRemoved;
+            players.Remove(playerToDelete);
+            RaisePropertyChanged("Players");
         }
     }
 }

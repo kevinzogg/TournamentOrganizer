@@ -18,7 +18,15 @@ namespace TournamentOrganizer.domain
 
         public void addPlayer(Player newMember)
         {
+            newMember.OnPlayerRemoved += MemberRemoved;
             members.Add(newMember);
+            this.RaisePropertyChanged("Members");
+        }
+
+        private void MemberRemoved(Player memberToRemove)
+        {
+            memberToRemove.OnPlayerRemoved -= MemberRemoved;
+            members.Remove(memberToRemove);
             this.RaisePropertyChanged("Members");
         }
     }

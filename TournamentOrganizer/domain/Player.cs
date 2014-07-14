@@ -8,6 +8,10 @@ namespace TournamentOrganizer.domain
 {
     public class Player
     {
+        public delegate void PlayerRemovedHandler(Player playerToDelete);
+        public event PlayerRemovedHandler OnPlayerRemoved;
+
+
         private String firstName;
         private String lastName;
         private PlayerStrength playerStrength;
@@ -28,6 +32,12 @@ namespace TournamentOrganizer.domain
         {
             get { return lastName; }
             set { lastName = value; }
+        }
+
+        internal void Dispose()
+        {
+            if (OnPlayerRemoved == null) return;
+            OnPlayerRemoved(this);
         }
     }
 }

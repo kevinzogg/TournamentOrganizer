@@ -10,8 +10,8 @@
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
         <TabControl>
-            <TabItem Header="Teams">
-                <Grid Name="TeamsContent">
+            <TabItem Header="Players">
+                <Grid Name="PlayersContent">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="*"/>
@@ -20,15 +20,18 @@
                         <Button Name="NewPlayer" Content="Add Player" Click="NewPlayer_Click"></Button>
                     </StackPanel>
                     <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ItemsControl ItemsSource="{Binding Teams}">
+                        <ItemsControl ItemsSource="{Binding Players}">
                             <ItemsControl.ItemTemplate>
-                                <DataTemplate DataType="{x:Type domain:Team}">
-                                    <views:EditTeam/>
+                                <DataTemplate DataType="{x:Type domain:Player}">
+                                    <views:EditPlayer/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </StackPanel>
                 </Grid>
+            </TabItem>
+            <TabItem Header="Teams">
+                <Grid Name="TeamsContent"/>
             </TabItem>
             <TabItem Header="Bracket">
                 <Grid Name="BracketContent"/>
