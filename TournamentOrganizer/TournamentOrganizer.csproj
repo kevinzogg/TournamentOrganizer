@@ -39,6 +39,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,11 +58,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="domain\InvalidNumberOfPlayersException.cs" />
+    <Compile Include="services\TeamManagement.cs" />
     <Compile Include="views\EditPlayer.xaml.cs">
       <DependentUpon>EditPlayer.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\EditTeam.xaml.cs">
       <DependentUpon>EditTeam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\TeamsControl.xaml.cs">
+      <DependentUpon>TeamsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\TournamentControl.xaml.cs">
       <DependentUpon>TournamentControl.xaml</DependentUpon>
@@ -88,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\EditTeam.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\TeamsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,9 +134,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

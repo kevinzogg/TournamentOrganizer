@@ -31,7 +31,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Teams">
-                <Grid Name="TeamsContent"/>
+                <views:TeamsControl/>
             </TabItem>
             <TabItem Header="Bracket">
                 <Grid Name="BracketContent"/>

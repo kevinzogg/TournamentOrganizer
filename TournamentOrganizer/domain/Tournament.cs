@@ -32,7 +32,13 @@ namespace TournamentOrganizer.domain
             private set { }
         }
 
-        public void addPlayer(Player newPlayer)
+        public void AddTeam(Team newTeam)
+        {
+            teams.Add(newTeam);
+            RaisePropertyChanged("Teams");
+        }
+
+        public void AddPlayer(Player newPlayer)
         {
             newPlayer.OnPlayerRemoved += PlayerRemoved;
             players.Add(newPlayer);

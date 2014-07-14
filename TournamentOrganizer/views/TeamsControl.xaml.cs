@@ -13,28 +13,33 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TournamentOrganizer.domain;
+using TournamentOrganizer.services;
 
 namespace TournamentOrganizer.views
 {
     /// <summary>
-    /// Interaction logic for TournamentControl.xaml
+    /// Interaction logic for TeamsControl.xaml
     /// </summary>
-    public partial class TournamentControl : UserControl
+    public partial class TeamsControl : UserControl
     {
-        public TournamentControl(Tournament tournament)
+        private TeamManagement teamManagement = new TeamManagement();
+
+        public TeamsControl()
         {
-            this.DataContext = tournament;
             InitializeComponent();
         }
 
-        private Tournament GetDataContext() {
+        private Tournament GetDataContext()
+        {
             return (Tournament)this.DataContext;
         }
 
-        private void NewPlayer_Click(object sender, RoutedEventArgs e)
+        private void CreateRandomTeams(object sender, RoutedEventArgs e)
         {
-            Player player = new Player();
-            GetDataContext().AddPlayer(player);
+            IList<Team> teams = teamManagement.CreateRandomTeams(GetDataContext().Players);
+            foreach (Team team in teams) {
+                GetDataContext().AddTeam(team);
+            }
         }
     }
 }

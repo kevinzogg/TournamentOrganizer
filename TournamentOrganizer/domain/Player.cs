@@ -11,7 +11,6 @@ namespace TournamentOrganizer.domain
         public delegate void PlayerRemovedHandler(Player playerToDelete);
         public event PlayerRemovedHandler OnPlayerRemoved;
 
-
         private String firstName;
         private String lastName;
         private PlayerStrength playerStrength;
